@@ -62,4 +62,4 @@ me to learn how to use MRuby:
 
 ## License
 
-All the examples found here are licensed under the [MIT license](/LICENSE).
+All the examples found here are licensed under the [MIT License](/LICENSE).
