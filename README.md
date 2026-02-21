@@ -1,6 +1,6 @@
 # MRuby Examples
 
-Collection of [MRuby](https://mruby.org/) sample programs.
+Collection of sample [MRuby](https://mruby.org/) programs.
 
 ## Build
 
