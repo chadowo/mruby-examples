@@ -1,2 +1,5 @@
 build/
 bin/
+
+.cache/
+.cmake_build
