@@ -26,9 +26,22 @@ Pacman:
 sudo pacman -S mruby
 ```
 
+### Other requirements
+
+Some examples require SDL2. Install it:
+```console
+$ sudo apt install libsdl2-dev
+```
+
+or 
+
+```
+$ sudo dnf install SDL2-devel
+```
+
 ### Compiling
 
-Use the followings commands
+Use the followings commands:
 
 ```console
 cmake -S . -B build
@@ -38,6 +51,8 @@ cmake --build build
 ## Summary
 
 Examples included here:
+
+### Basic
 
 | Example                                       | Description                                                     |
 |:---------------------------------------------:| --------------------------------------------------------------- |
@@ -51,6 +66,12 @@ Examples included here:
 | [kwargs](src/kwargs/)                         | Parse keyword arguments.                                        |
 | [blocks](src/blocks/)                         | Interact with Ruby's block from C.                              |
 | [compiling-bytecode](src/compiling-bytecode/) | Compile Ruby code into bytecode format and save it on the disk. |
+
+### SDL2
+
+| Example                        | Description                                   |
+|:------------------------------:| --------------------------------------------- |
+| [sdl-wrapper](src/sdl-wrapper) | Basic wrapper around SDL2 to create a window. |
 
 ## Credits
 
