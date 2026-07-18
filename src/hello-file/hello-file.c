@@ -1,28 +1,30 @@
-#include <stdio.h>
+/* Loading Ruby code from a file */
 
 #include <mruby.h>
 #include <mruby/compile.h>
 
-/* Loading Ruby code from a file */
-int main(int argc, char *argv[]) {
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
     mrb_state *mrb = mrb_open();
-    if (!mrb) {
-        fprintf(stderr, "Couldn't initialize MRuby\n");
-        return 1;
+    if (mrb == NULL) {
+        fputs("Couldn't initialize MRuby state", stderr);
+        return EXIT_FAILURE;
     }
 
-    // Open our file
-    FILE *rubyScript = fopen("main.rb", "r");
-    if (!rubyScript) {
-        fprintf(stderr, "Couldn't find a main.rb file in the current directory, quitting...\n");
+    FILE *ruby_script = fopen("main.rb", "r");
+    if (ruby_script == NULL) {
+        fputs("Couldn't find a main.rb file in the current directory!", stderr);
         mrb_close(mrb);
-        return 1;
+        return EXIT_FAILURE;
     }
 
-    // Pass it to MRuby
-    mrb_load_file(mrb, rubyScript);
+    mrb_load_file(mrb, ruby_script);
 
-    fclose(rubyScript);
+    fclose(ruby_script);
     mrb_close(mrb);
-    return 0;
+
+    return EXIT_SUCCESS;
 }

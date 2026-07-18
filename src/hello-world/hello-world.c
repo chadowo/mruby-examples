@@ -1,20 +1,23 @@
-#include <stdio.h>
+/* Basic hello world with MRuby. */
 
 #include <mruby.h>
 #include <mruby/compile.h>
 
-/* Basic hello world with MRuby */
-int main(int argc, char *argv[]) {
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
     // Initiate MRuby
     mrb_state *mrb = mrb_open();
-    if (!mrb) {
-        fprintf(stderr, "Couldn't initialize MRuby\n");
-        return 1;
+    if (mrb == NULL) {
+        fputs("Couldn't initialize MRuby state", stderr);
+        return EXIT_FAILURE;
     }
 
-    // Load Ruby program from string
-    mrb_load_string(mrb, "puts 'Hello World!'");
+    // Load and run Ruby program from literal string
+    mrb_load_string(mrb, "puts 'Hello, World!'");
 
     mrb_close(mrb);
-    return 0;
+    return EXIT_SUCCESS;
 }
