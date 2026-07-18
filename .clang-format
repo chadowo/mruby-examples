@@ -4,11 +4,13 @@ AlignOperands: 'true'
 AlignTrailingComments: 'true'
 AllowShortIfStatementsOnASingleLine: Never
 AlwaysBreakAfterDefinitionReturnType: None
+BreakBeforeBraces: Linux
 ColumnLimit: '120'
 Cpp11BracedListStyle: 'false'
 IndentWidth: '4'
 MaxEmptyLinesToKeep: '1'
 PointerAlignment: Right
+ReferenceAlignment: Right
 SortUsingDeclarations: 'true'
 SpaceInEmptyParentheses: 'false'
 SpacesBeforeTrailingComments: '1'
