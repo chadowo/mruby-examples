@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      cc: [gcc, clang]
+      matrix:
+        cc: [gcc, clang]
     env:
       CC: ${{ matrix.cc }}
     steps:
