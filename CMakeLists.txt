@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1...3.7)
+cmake_minimum_required(VERSION 3.10...3.22)
 
 project(mruby-examples
         LANGUAGES C)
@@ -17,11 +17,12 @@ set(EXAMPLES
     sdl-wrapper)
 
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
 set(WARNINGS -pedantic -Wall -Wshadow -Wpointer-arith
              -Wno-missing-braces -Wcast-qual -Wstrict-prototypes)
 
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
 
 foreach(EXAMPLE ${EXAMPLES})
   set(OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${EXAMPLE}")
