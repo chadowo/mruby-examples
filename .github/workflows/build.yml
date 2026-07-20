@@ -1,11 +1,15 @@
 name: Build
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      cc: [gcc, clang]
+    env:
+      CC: ${{ matrix.cc }}
     steps:
       - uses: actions/checkout@v3
 
