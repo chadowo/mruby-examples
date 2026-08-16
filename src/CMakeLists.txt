@@ -14,7 +14,7 @@ set(EXAMPLES
 foreach(EXAMPLE ${EXAMPLES})
   set(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/${EXAMPLE}")
 
-  add_executable(${EXAMPLE} ${EXAMPLE}/${EXAMPLE}.c)
+  add_executable(${EXAMPLE} ${EXAMPLE}/${EXAMPLE}.c) # The path is generally src/example_name/example_name.c
 
   set_property(TARGET ${EXAMPLE}
                PROPERTY RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
@@ -34,4 +34,4 @@ foreach(EXAMPLE ${EXAMPLES})
   endif()
 endforeach()
 
-message(STATUS "Binaries will be placed on the subdirectory bin/ relative to the build directory")
+message(STATUS "Binaries will be placed on the subdirectory bin/ of the build directory")
