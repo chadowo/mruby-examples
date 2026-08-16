@@ -13,4 +13,4 @@ set(WARNINGS -pedantic -Wall -Wshadow -Wpointer-arith
 
 find_package(SDL2 REQUIRED)
 
-include("src/CMakeLists.txt")
+add_subdirectory("src/")
