@@ -1,38 +1,44 @@
-#include <stdio.h>
-
 #include <mruby.h>
 #include <mruby/string.h>
 #include <mruby/value.h>
 #include <mruby/variable.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 
 /* This sample program shows you how to push various tipes of
  * variables to Ruby
  * TODO: Get the variables and print them */
 
 /* Simply set an integer as ivar */
-static mrb_value mrb_foobar_new(mrb_state *mrb, mrb_value self) {
-    mrb_int num;
+static mrb_value mrb_foobar_new(mrb_state *mrb, mrb_value self)
+{
+    mrb_int arg_num;
 
-    mrb_get_args(mrb, "i", &num);
+    mrb_get_args(mrb, "i", &arg_num);
 
-    mrb_iv_set(mrb, self, mrb_intern_lit(mrb, "@num"), mrb_fixnum_value(num));
+    mrb_iv_set(mrb, self, mrb_intern_lit(mrb, "@num"), mrb_fixnum_value(arg_num));
 
     return self;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     mrb_state *mrb = mrb_open();
-    if (!mrb) {
-        fprintf(stderr, "Couldn't initialize MRuby\n");
-        return 1;
+    if (mrb == NULL) {
+        fputs("Couldn't initialize MRuby state", stderr);
+        return EXIT_FAILURE;
     }
 
-    // Pushing variables to Ruby is relatively easy, here we define a constant,
-    // FOO, with the integer value 42
-    mrb_define_const(mrb, mrb->kernel_module, "FOO", mrb_fixnum_value(42));
+    // Pushing variables to Ruby is relatively easy.
 
-    // Globals
+    // Here we define a constant, 'FOO', of class Integer with a value of 42
+    mrb_define_const(mrb, mrb->kernel_module, "FOO", mrb_fixnum_value(42));
+    // => FOO = 42
+
+    // Globals are slightly different
     mrb_gv_set(mrb, mrb_intern_lit(mrb, "$bar"), mrb_str_new_lit(mrb, "I'm a global!"));
+    // => $bar = "I'm a global!"
 
     // Instance variables
     struct RClass *foobarKlass = mrb_define_class(mrb, "Foobar", mrb->object_class);
@@ -61,5 +67,5 @@ int main(int argc, char *argv[]) {
     printf("@@quux: %f\n", quuxCvar);
 
     mrb_close(mrb);
-    return 0;
+    return EXIT_SUCCESS;
 }

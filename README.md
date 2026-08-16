@@ -11,7 +11,7 @@ Collection of sample [MRuby](https://mruby.org/) programs.
 Make sure you've got MRuby installed, see [here](https://github.com/mruby/mruby#how-to-get-mruby).
 
 > [!TIP]
-> If you are on Linux chances are MRuby is already in the package repositories of your favorite distro! then you'll need to use your distro specific package manager to install it. E.g:
+> If you are on Linux chances are MRuby is already in the repositories of your favorite distro! If so, you can use your distro specific package manager to install it. E.g:
 
 APT:  
 ```console
@@ -47,16 +47,19 @@ Use the followings commands:
 
 ```console
 cmake -S . -B build
-cmake --build build
+cmake --build build --parallel
 ```
 
-## Summary
+All the binaries will be in `build/examples/`. There are some examples that aren't built by default,
+see the below sections for what and how to enable it.
 
-Examples included here:
+## Examples
 
-### Basic
+### Core
 
-| Example                                       | Description                                                     |
+Simple stuff.
+
+| Name                                          | Description                                                     |
 |:---------------------------------------------:| --------------------------------------------------------------- |
 | [hello-world](src/hello-world/)               | Classic hello world.                                            |
 | [hello-file](src/hello-file/)                 | Load and execute Ruby code from a file.                         |
@@ -71,7 +74,11 @@ Examples included here:
 
 ### SDL2
 
-| Example                        | Description                                   |
+Now we have *graphics*!
+
+Enable with `-DBUILD_SDL=On` when configuring CMake. Needs [SDL2](https://wiki.libsdl.org/SDL2/Installation#supported-platforms).
+
+| Name                           | Description                                   |
 |:------------------------------:| --------------------------------------------- |
 | [sdl-wrapper](src/sdl-wrapper) | Basic wrapper around SDL2 to create a window. |
 

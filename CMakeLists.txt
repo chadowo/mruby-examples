@@ -11,6 +11,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(WARNINGS -pedantic -Wall -Wshadow -Wpointer-arith
              -Wno-missing-braces -Wcast-qual -Wstrict-prototypes)
 
-find_package(SDL2 REQUIRED)
+option(BUILD_SDL "Build SDL samples (needs SDL2)" OFF)
+message(STATUS "Option BUILD_SDL - ${BUILD_SDL}")
 
-add_subdirectory("src/")
+# MRuby depends on math
+find_library(MATH_LIBRARY m)
+if(BUILD_SDL)
+  find_package(SDL2 REQUIRED)
+endif()
+
+add_subdirectory(src)

@@ -2,6 +2,7 @@
 
 #include <mruby.h>
 #include <mruby/compile.h>
+#include <mruby/proc.h>
 
 #include <stdio.h>
 #include <stdlib.h>
