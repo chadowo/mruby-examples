@@ -14,14 +14,14 @@ set(EXAMPLES
 foreach(EXAMPLE ${EXAMPLES})
   set(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/${EXAMPLE}")
 
-  add_executable(${EXAMPLE} src/${EXAMPLE}/${EXAMPLE}.c)
+  add_executable(${EXAMPLE} ${EXAMPLE}/${EXAMPLE}.c)
 
   set_property(TARGET ${EXAMPLE}
                PROPERTY RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
 
   # Copy Ruby files (if any) to the example's output directory
   file(GLOB RUBY_FILES
-       "src/${EXAMPLE}/*.rb")
+       "${EXAMPLE}/*.rb")
   file(COPY ${RUBY_FILES}
        DESTINATION ${OUTPUT_DIRECTORY})
 
